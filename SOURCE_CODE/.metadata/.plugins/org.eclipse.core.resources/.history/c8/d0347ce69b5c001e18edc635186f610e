@@ -57,8 +57,6 @@ static void MX_TIM2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint32_t counter=0;
-#define D_HIGH HAL_GPIO_WritePin(ENGPIO_Port, D_Pin, GPIO_PIN_SET)
-#define D_LOW HAL_GPIO_WritePin(D_GPIO_Port, D_Pin, GPIO_PIN_RESET)
 uint8_t segmentNumber[10] ={
 		0x3f, //0
 		0x06, //1
@@ -113,8 +111,8 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  //HAL_TIM_Base_Start_IT (& htim2 );
-  //HAL_TIM_PeriodElapsedCallback(& htim2);
+ // HAL_TIM_Base_Start_IT (& htim2 );
+  HAL_TIM_PeriodElapsedCallback(& htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -122,8 +120,6 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  SevenSegment_Update(segmentNumber[1]);
-	  D_HIGH();
 
     /* USER CODE BEGIN 3 */
   }
@@ -250,12 +246,12 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-int counter1 = 100;
+int counter = 100;
 void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 	{
-		counter1 --;
-		if( counter1 <= 0){
-		counter1 = 100;
+		counter --;
+		if( counter <= 0){
+		counter = 100;
 		HAL_GPIO_TogglePin ( LED_RED_GPIO_Port , LED_RED_Pin );
 	}
 }
