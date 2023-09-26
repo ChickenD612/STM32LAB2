@@ -57,10 +57,10 @@ static void MX_TIM2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint32_t counter=0;
-#define EN0_HIGH() HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET)
-#define EN0_LOW() HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET)
-#define EN1_HIGH() HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET)
-#define EN1_LOW() HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET)
+#define EN0_HIGH HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET)
+#define EN0_LOW HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET)
+#define EN1_HIGH HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET)
+#define EN1_LOW HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET)
 uint8_t segmentNumber[10] ={
 		0x3f, //0
 		0x06, //1
@@ -115,7 +115,7 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT (& htim2 );
+  //HAL_TIM_Base_Start_IT (& htim2 );
   //HAL_TIM_PeriodElapsedCallback(& htim2);
   /* USER CODE END 2 */
 
@@ -126,7 +126,6 @@ int main(void)
     /* USER CODE END WHILE */
 	  SevenSegment_Update(segmentNumber[1]);
 	  EN0_HIGH();
-	  EN1_HIGH();
 
     /* USER CODE BEGIN 3 */
   }

@@ -1,27 +1,23 @@
-01:47:26 **** Incremental Build of configuration Debug for project LAB2 ****
+01:52:33 **** Incremental Build of configuration Debug for project LAB2 ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:60:34: error: 'D_GPIO_Port' undeclared (first use in this function); did you mean 'EN0_GPIO_Port'?
-   60 | #define D_HIGH HAL_GPIO_WritePin(D_GPIO_Port, D_Pin, GPIO_PIN_SET)
-      |                                  ^~~~~~~~~~~
-../Core/Src/main.c:126:4: note: in expansion of macro 'D_HIGH'
-  126 |    D_HIGH();
-      |    ^~~~~~
-../Core/Src/main.c:60:34: note: each undeclared identifier is reported only once for each function it appears in
-   60 | #define D_HIGH HAL_GPIO_WritePin(D_GPIO_Port, D_Pin, GPIO_PIN_SET)
-      |                                  ^~~~~~~~~~~
-../Core/Src/main.c:126:4: note: in expansion of macro 'D_HIGH'
-  126 |    D_HIGH();
-      |    ^~~~~~
-../Core/Src/main.c:60:47: error: 'D_Pin' undeclared (first use in this function)
-   60 | #define D_HIGH HAL_GPIO_WritePin(D_GPIO_Port, D_Pin, GPIO_PIN_SET)
-      |                                               ^~~~~
-../Core/Src/main.c:126:4: note: in expansion of macro 'D_HIGH'
-  126 |    D_HIGH();
-      |    ^~~~~~
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j12 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-gcc -o "LAB2.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Microcontroller\LAB2\SOURCE_CODE\LAB2\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: LAB2.elf
+ 
+arm-none-eabi-size   LAB2.elf 
+arm-none-eabi-objdump -h -S  LAB2.elf  > "LAB2.list"
+arm-none-eabi-objcopy  -O ihex  LAB2.elf  "LAB2.hex"
+   text	   data	    bss	    dec	    hex	filename
+   7156	     36	   1644	   8836	   2284	LAB2.elf
+arm-none-eabi-objcopy  -O binary  LAB2.elf  "LAB2.bin"
+Finished building: default.size.stdout
+ 
+Finished building: LAB2.hex
+Finished building: LAB2.bin
+ 
+ 
+Finished building: LAB2.list
+ 
 
-01:47:26 Build Failed. 3 errors, 0 warnings. (took 296ms)
+01:52:33 Build Finished. 0 errors, 0 warnings. (took 674ms)
 
