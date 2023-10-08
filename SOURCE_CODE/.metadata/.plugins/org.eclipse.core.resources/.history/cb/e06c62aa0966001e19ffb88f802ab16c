@@ -293,43 +293,21 @@ int main(void)
 setTimer1(1);
 setTimer2(1);
 setTimer3(1);
-int hour=15,minute=8,second=50;
+int hour=0,minute=8,second=50;
   while (1)
   {
-	  if(timer1_flag==1){
-		  second++;
-		  updateClockBuffer(hour, minute);
-		  setTimer1(100);
-
-	  if(second>=60){
-		  minute++;
-		  second=0;
-
-	  if(minute>=60){
-		  hour++;
-		  minute=0;
-	  }
-	  if(hour>=24){
-		  hour=0;
-	  }}}
-
-
-	  if(timer2_flag==1){
-		  updateled_buffer(index_led);
-	  if(index_led>=3){
-		  index_led=0;
-	  }
-	  else{
-		  index_led++;
-	  }
-	  setTimer2(10);}
-	  if(timer3_flag==1){
-		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
-		  setTimer3(100);
-	  }
-
     /* USER CODE END WHILE */
+	  if(second>=60){
+	  		  minute++;
+	  		  second=0;
 
+	  	  if(minute>=60){
+	  		  hour++;
+	  		  minute=0;
+	  	  }
+	  	  if(hour>=24){
+	  		  hour=0;
+	  	  }}
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
