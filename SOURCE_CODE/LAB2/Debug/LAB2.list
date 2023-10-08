@@ -1182,6 +1182,7 @@ void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef *htim2 ){
  80008aa:	6078      	str	r0, [r7, #4]
 	timerRun();
  80008ac:	f000 f846 	bl	800093c <timerRun>
+	//timer_run();
 }
  80008b0:	bf00      	nop
  80008b2:	3708      	adds	r7, #8
