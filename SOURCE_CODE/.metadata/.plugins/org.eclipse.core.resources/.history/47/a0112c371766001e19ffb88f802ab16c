@@ -264,10 +264,7 @@ int main(void)
 				hour = 0;
 			}
 			updateClockBuffer();
-			update7SEG(0);
-			update7SEG(1);
-			update7SEG(2);
-			update7SEG(3);
+			update7SEG();
 		}
 	HAL_Delay(1000);
     /* USER CODE BEGIN 3 */

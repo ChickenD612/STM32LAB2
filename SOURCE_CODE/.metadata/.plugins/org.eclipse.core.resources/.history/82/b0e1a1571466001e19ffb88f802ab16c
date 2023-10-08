@@ -184,15 +184,18 @@ void update7SEG(int index){
 	default:
 		break;
 	}
-	display7SEG(led_buffer[index]);
+	display7SEG(index);
 }
-int hour, minute, second;
-void updateClockBuffer()
+void updateClockBuffer();
 {
-	led_buffer[0]=hour/10;
-	led_buffer[1]=hour%10;
-	led_buffer[2]=minute/10;
-	led_buffer[3]=minute%10;
+	update7SEG(0);
+	display(hour/10);
+	update7SEG(0);
+	display(hour/10);
+	update7SEG(0);
+	display(hour/10);
+	update7SEG(0);
+	display(hour/10);
 }
 /* USER CODE END 0 */
 
@@ -234,7 +237,7 @@ int main(void)
   setTimer1(100);
   setTimer2(100);
   setTimer3(100);
-  hour = 15, minute = 8, second = 50;
+  int hour = 15, minute = 8, second = 50;
   while (1)
   {
     /* USER CODE END WHILE */
@@ -249,9 +252,9 @@ int main(void)
 			//TODO
 		}
 	if(timer3_flag==1){
+			setTimer3(100);
 			//TODO
 			second++;
-			setTimer3(100);
 			if (second >= 60){
 				second = 0;
 				minute++;
@@ -264,10 +267,6 @@ int main(void)
 				hour = 0;
 			}
 			updateClockBuffer();
-			update7SEG(0);
-			update7SEG(1);
-			update7SEG(2);
-			update7SEG(3);
 		}
 	HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
