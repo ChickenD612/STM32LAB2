@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  0002001c  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000086a6  00000000  00000000  00020045  2**0
+ 12 .debug_info   00008714  00000000  00000000  00020045  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000015f1  00000000  00000000  000286eb  2**0
+ 13 .debug_abbrev 0000160d  00000000  00000000  00028759  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000980  00000000  00000000  00029ce0  2**3
+ 14 .debug_aranges 00000990  00000000  00000000  00029d68  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000008c8  00000000  00000000  0002a660  2**3
+ 15 .debug_ranges 000008d8  00000000  00000000  0002a6f8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000162b2  00000000  00000000  0002af28  2**0
+ 16 .debug_macro  000162b2  00000000  00000000  0002afd0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00009513  00000000  00000000  000411da  2**0
+ 17 .debug_line   0000955c  00000000  00000000  00041282  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00081f9f  00000000  00000000  0004a6ed  2**0
+ 18 .debug_str    00081fda  00000000  00000000  0004a7de  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000cc68c  2**0
+ 19 .comment      00000053  00000000  00000000  000cc7b8  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000026dc  00000000  00000000  000cc6e0  2**2
+ 20 .debug_frame  00002724  00000000  00000000  000cc80c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -728,14 +728,14 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer1(100);
- 80005fe:	2064      	movs	r0, #100	; 0x64
+  setTimer1(1);
+ 80005fe:	2001      	movs	r0, #1
  8000600:	f000 f960 	bl	80008c4 <setTimer1>
-  setTimer2(100);
- 8000604:	2064      	movs	r0, #100	; 0x64
+  setTimer2(1);
+ 8000604:	2001      	movs	r0, #1
  8000606:	f000 f971 	bl	80008ec <setTimer2>
-  setTimer3(100);
- 800060a:	2064      	movs	r0, #100	; 0x64
+  setTimer3(1);
+ 800060a:	2001      	movs	r0, #1
  800060c:	f000 f982 	bl	8000914 <setTimer3>
   hour = 15, minute = 8, second = 50;
  8000610:	4b2f      	ldr	r3, [pc, #188]	; (80006d0 <main+0xec>)
