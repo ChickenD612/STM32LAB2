@@ -214,12 +214,7 @@ void timer_run(){
 
 const int MAX_LEX_MATRIX = 8;
 int index_led_matrix = 0;
-uint8_t matrix_buffer[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x66, 0x66, 0x066}; //A
-
-void displayLEDMatrix(uint8_t matrix_buffer[8]){
-	HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, GPIO_PIN_RESET );
-}
-
+uint8_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 void updateLEDMatrix (int index ){
 	switch ( index ) {
     case 0:
@@ -306,6 +301,7 @@ void updateLEDMatrix (int index ){
          default :
          break ;
       }
+	displayLEDMatrix();
  }
 /* USER CODE END 0 */
 
@@ -383,7 +379,6 @@ int main(void)
 	  	if(timer4_flag==1){
 	  		  setTimer4(100);
 	  		  //TODO
-	  		  displayLEDMatrix(matrix_buffer); //A
 
 	  	}
 	  	HAL_Delay(1000);

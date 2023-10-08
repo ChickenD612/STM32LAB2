@@ -214,13 +214,19 @@ void timer_run(){
 
 const int MAX_LEX_MATRIX = 8;
 int index_led_matrix = 0;
-uint8_t matrix_buffer[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x66, 0x66, 0x066}; //A
+uint8_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
+void updateLEDMatrix(){
 
-void displayLEDMatrix(uint8_t matrix_buffer[8]){
-	HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, GPIO_PIN_RESET );
+	  HAL_GPIO_WritePin(ROW0_GPIO_Port, ROW0_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(ROW1_GPIO_Port, ROW1_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(ROW2_GPIO_Port, ROW2_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(ROW3_GPIO_Port, ROW3_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(ROW4_GPIO_Port, ROW4_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(ROW5_GPIO_Port, ROW5_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(ROW6_GPIO_Port, ROW6_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(ROW7_GPIO_Port, ROW7_Pin, GPIO_PIN_RESET);
 }
-
-void updateLEDMatrix (int index ){
+void displayLEDMatrix (int index ){
 	switch ( index ) {
     case 0:
 	    HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, GPIO_PIN_RESET );
@@ -306,6 +312,7 @@ void updateLEDMatrix (int index ){
          default :
          break ;
       }
+	updateLEDMatrix();
  }
 /* USER CODE END 0 */
 
@@ -380,11 +387,10 @@ int main(void)
 	  			}
 	  			updateClockBuffer();
 	  		}
-	  	if(timer4_flag==1){
-	  		  setTimer4(100);
+	  	if(timer2_flag==1){
+	  		  setTimer2(100);
+	  		  HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 	  		  //TODO
-	  		  displayLEDMatrix(matrix_buffer); //A
-
 	  	}
 	  	HAL_Delay(1000);
     /* USER CODE BEGIN 3 */

@@ -217,7 +217,7 @@ int index_led_matrix = 0;
 uint8_t matrix_buffer[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x66, 0x66, 0x066}; //A
 
 void displayLEDMatrix(uint8_t matrix_buffer[8]){
-	HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, GPIO_PIN_RESET );
+
 }
 
 void updateLEDMatrix (int index ){
