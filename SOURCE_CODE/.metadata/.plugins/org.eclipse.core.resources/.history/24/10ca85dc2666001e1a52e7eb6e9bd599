@@ -216,9 +216,8 @@ const int MAX_LEX_MATRIX = 8;
 int index_led_matrix = 0;
 uint8_t matrix_buffer[8] = {0x18, 0x3C, 0x66, 0x66, 0x7E, 0x66, 0x66, 0x066}; //A
 
-void displayLEDMatrix(int col){
-	updateLEDMatrix(col);
-	HAL_GPIO_WritePin(ENM0_GPIO_Port, ENM0_Pin, GPIO_PIN_RESET);
+void displayLEDMatrix(uint8_t matrix_buffer[]{
+
 }
 
 void updateLEDMatrix (int index ){
@@ -230,7 +229,7 @@ void updateLEDMatrix (int index ){
     	HAL_GPIO_WritePin(ENM3_GPIO_Port, ENM3_Pin, GPIO_PIN_SET );
     	HAL_GPIO_WritePin(ENM4_GPIO_Port, ENM4_Pin, GPIO_PIN_SET );
     	HAL_GPIO_WritePin(ENM5_GPIO_Port, ENM5_Pin, GPIO_PIN_SET );
-    	HAL_GPIO_WritePin(ENM6_GPIO_Port, ENM6_Pin, GPIO_PIN_SET );
+    	HAL_GPIO_WritePin(ENM6_GPIO_Port, ENM6_Pin,GPIO_PIN_SET );
     	HAL_GPIO_WritePin(ENM7_GPIO_Port, ENM7_Pin, GPIO_PIN_SET );
         break ;
     case 1:
@@ -351,7 +350,6 @@ int main(void)
   setTimer4(1);
   setTimer5(1);
   hour = 15, minute = 8, second = 50;
-  int counter4=0;
   while (1)
   {
     /* USER CODE END WHILE */
@@ -371,6 +369,7 @@ int main(void)
 	  			if (second >= 60){
 	  				second = 0;
 	  				minute++;
+	  				setTimer3(100);
 	  			}
 	  			if (minute >=60){
 	  				minute=0;
@@ -379,15 +378,13 @@ int main(void)
 	  			if (hour >= 24){
 	  				hour = 0;
 	  			}
-	  			setTimer3(100);
 	  			updateClockBuffer();
 	  		}
 	  	if(timer4_flag==1){
-	  		setTimer4(12);
-	  		//TODO
-	  		counter4++;
-	  		if (counter4 == 9) {counter4 = 0;}
-	  		displayLEDMatrix(counter4); //A
+	  		  setTimer4(12);
+	  		  //TODO
+	  		  displayLEDMatrix(matrix_buffer); //A
+
 	  	}
 	  	HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
