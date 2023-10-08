@@ -269,6 +269,7 @@ int main(void)
 			update7SEG(3);
 			//TODO
 		}
+	setTimer2(250);
 	if(timer3_flag==1){
 			//TODO
 			second++;

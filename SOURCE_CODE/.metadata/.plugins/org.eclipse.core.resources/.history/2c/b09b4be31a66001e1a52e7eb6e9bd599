@@ -259,14 +259,10 @@ int main(void)
 		setTimer1(100);
 		//TODO
 		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-		HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 		}
 	if(timer2_flag==1){
 			setTimer2(100);
-			update7SEG(0);
-			update7SEG(1);
-			update7SEG(2);
-			update7SEG(3);
+			HAL_GPIO_TogglePin(DOT_GPIO_Port, DOT_Pin);
 			//TODO
 		}
 	if(timer3_flag==1){
@@ -285,6 +281,10 @@ int main(void)
 				hour = 0;
 			}
 			updateClockBuffer();
+			update7SEG(0);
+			update7SEG(1);
+			update7SEG(2);
+			update7SEG(3);
 		}
 	HAL_Delay(1000);
     /* USER CODE BEGIN 3 */
