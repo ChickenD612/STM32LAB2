@@ -388,7 +388,7 @@ int main(void)
 	 {
 		 updateLEDMatrix(index_led_matrix++);
 		 if(index_led_matrix == MAX_LED_MATRIX) index_led_matrix = 0;
-	 	 setTimer4(2);
+	 	 setTimer4(5);
 	 }
     /* USER CODE BEGIN 3 */
   }
